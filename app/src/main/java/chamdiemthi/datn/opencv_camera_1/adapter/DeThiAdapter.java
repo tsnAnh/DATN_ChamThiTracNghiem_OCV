@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rantea.opencv_camera_1.R;
@@ -37,6 +38,10 @@ public class DeThiAdapter extends RecyclerView.Adapter<DeThiAdapter.BTVH> implem
         holder.ma.setText("" + deThi.maDeThi);
         holder.item.setId(position);
         holder.item.setOnClickListener(this);
+        holder.imageRemoveDeThi.setOnClickListener(v -> {
+            baiThi.dsDeThi.remove(deThi);
+            notifyDataSetChanged();
+        });
     }
 
     @Override
@@ -59,11 +64,13 @@ public class DeThiAdapter extends RecyclerView.Adapter<DeThiAdapter.BTVH> implem
 
         View item;
         TextView ma;
+        ImageView imageRemoveDeThi;
 
         public BTVH(View itemView) {
             super(itemView);
             ma = itemView.findViewById(R.id.tv_ma_de);
             item = itemView.findViewById(R.id.item_bai_thi);
+            imageRemoveDeThi = itemView.findViewById(R.id.image_removeDeThi);
         }
     }
 }
